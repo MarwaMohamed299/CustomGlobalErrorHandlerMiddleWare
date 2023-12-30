@@ -23,15 +23,13 @@ namespace GlobalErrorHandling.Controllers
         {
             try
             {
-                // Simulate an exception (e.g., divide by zero)
                 int result = 0;
                 int divisor = result / result; // This will cause a divide by zero exception
             }
             catch (Exception ex)
             {
-                // Log the exception or perform any other necessary actions
                 _logger.LogError(ex, "An exception occurred while processing the request.");
-                throw; // Re-throw the exception to be caught by the global error handler middleware
+                throw;
             }
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
